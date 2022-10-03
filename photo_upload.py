@@ -18,7 +18,7 @@ def upload(album, photos_dir):
         uploaded += 1
         object_name = f"{album}/{f}"
         try:
-            s3.upload_file(os.path.abspath(f), boto_client_config.get_bucket(), object_name)
+            s3.upload_file(os.path.join(photos_dir, f), boto_client_config.get_bucket(), object_name)
         except:
             print(f"File {f} has not been loaded")
     if uploaded == 0:
